@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:DeveloidEventLottery"
       mc:Ignorable="d" 
       d:DesignHeight="380" d:DesignWidth="800"
-      Title="Main">
+      Title="Main"
+      Loaded="Page_Loaded">
 
     <Grid Margin="10">
         <Grid.ColumnDefinitions>

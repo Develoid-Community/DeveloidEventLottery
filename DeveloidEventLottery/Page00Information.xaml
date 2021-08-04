@@ -43,7 +43,7 @@
                 Style="{StaticResource ContentButton}"
                 Margin="5, 0"
                 Width="150"
-                Content="처음으로" Cursor="Hand"
+                Content="이전으로" Cursor="Hand"
                 Click="ButtonClick_ToMain"/>
     </Grid>
 </Page>

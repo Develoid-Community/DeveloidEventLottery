@@ -12,7 +12,9 @@ namespace DeveloidEventLottery
         public Page01Main()
         {
             InitializeComponent();
-
+        }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
             MainWindow.FOTTER_LOCK = false;
         }
 
@@ -77,5 +79,6 @@ namespace DeveloidEventLottery
             }
 
         }
+
     }
 }

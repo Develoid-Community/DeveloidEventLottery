@@ -19,12 +19,12 @@ namespace DeveloidEventLottery
         public Page02CountDown()
         {
             InitializeComponent();
-
-            MainWindow.FOTTER_LOCK = true;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            MainWindow.FOTTER_LOCK = true;
+
             Count = 5;
 
             timer = new Timer();

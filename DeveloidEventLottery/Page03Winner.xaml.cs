@@ -12,12 +12,12 @@ namespace DeveloidEventLottery
         public Page03Winner()
         {
             InitializeComponent();
-
-            MainWindow.FOTTER_LOCK = true;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            MainWindow.FOTTER_LOCK = false;
+
             Console.WriteLine("Get winner list.");
 
             Winner.Get();
