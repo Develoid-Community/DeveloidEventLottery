@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace DeveloidEventLottery
@@ -195,7 +194,7 @@ namespace DeveloidEventLottery
                 // 헤더 생성
                 string str = "상품, 닉네임, ID" + Environment.NewLine;
 
-                for(int i = 0; i < Bindings.LIST_WINNER.Count; i++)
+                for (int i = 0; i < Bindings.LIST_WINNER.Count; i++)
                 {
                     str += string.Format("{0}, ", Bindings.LIST_WINNER[i].Item);
                     str += string.Format("{0}, ", Bindings.LIST_WINNER[i].NickName);
@@ -209,7 +208,7 @@ namespace DeveloidEventLottery
             {
                 Console.WriteLine(ex);
             }
-            
+
         }
     }
 }

@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DeveloidEventLottery
 {
@@ -22,38 +12,10 @@ namespace DeveloidEventLottery
     /// </summary>
     public partial class MainWindow : Window
     {
-        #region 제목표시줄 + 중복 실행 방지
-
-        // 중복 실행 방지
-        [DllImportAttribute("user32.dll", EntryPoint = "FindWindow")]
-        public static extern int FindWindow(string clsName, string wndName);
+        #region 제목표시줄
 
         private Point startPos;
         readonly System.Windows.Forms.Screen[] screens = System.Windows.Forms.Screen.AllScreens;
-
-        [DllImport("user32.dll")]
-        static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
-        [DllImport("user32.dll")]
-        static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
-        [DllImport("user32.dll")]
-        static extern int TrackPopupMenu(IntPtr hMenu, uint uFlags, int x, int y, int nReserved, IntPtr hWnd, IntPtr prcRect);
-
-        // 상태 변경되는 경우
-        private void Window_StateChanged(object sender, EventArgs e)
-        {
-            if (this.WindowState == WindowState.Maximized) // 최대화
-            {
-                //TitleBar.Margin = new Thickness(7);
-                //rectMax.Visibility = Visibility.Hidden;
-                //rectMin.Visibility = Visibility.Visible;
-            }
-            else // 이외 전부
-            {
-                //TitleBar.Margin = new Thickness(0);
-                //rectMax.Visibility = Visibility.Visible;
-                //rectMin.Visibility = Visibility.Hidden;
-            }
-        }
 
         // 위치 변경되는 경우
         private void Window_LocationChanged(object sender, EventArgs e)
@@ -86,42 +48,6 @@ namespace DeveloidEventLottery
                 }
                 DragMove();
             }
-        }
-
-        // 마우스 클릭을 놓은 경우
-        private void System_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                if (e.ClickCount >= 2)
-                {
-                    this.WindowState = (this.WindowState == WindowState.Normal) ? WindowState.Maximized : WindowState.Normal;
-                }
-                else
-                {
-                    startPos = e.GetPosition(null);
-                }
-            }
-            else if (e.ChangedButton == MouseButton.Right)
-            {
-                var pos = PointToScreen(e.GetPosition(this));
-                IntPtr hWnd = new System.Windows.Interop.WindowInteropHelper(this).Handle;
-                IntPtr hMenu = GetSystemMenu(hWnd, false);
-                int cmd = TrackPopupMenu(hMenu, 0x100, (int)pos.X, (int)pos.Y, 0, hWnd, IntPtr.Zero);
-                if (cmd > 0) SendMessage(hWnd, 0x112, (IntPtr)cmd, IntPtr.Zero);
-            }
-        }
-
-        // 최소화
-        private void Mimimize_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
-        // 최대화
-        private void Maximize_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = (this.WindowState == WindowState.Normal) ? WindowState.Maximized : WindowState.Normal;
         }
 
         // 닫기

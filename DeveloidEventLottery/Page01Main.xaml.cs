@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.IO;
 
 namespace DeveloidEventLottery
 {
@@ -63,21 +51,21 @@ namespace DeveloidEventLottery
         // 추첨
         private void ButtonClick_LotteryRun(object s, RoutedEventArgs e)
         {
-            if(ItemList.Items.Count < 1)
+            if (ItemList.Items.Count < 1)
             {
                 Console.WriteLine("Event item list is null.");
                 MessageBox.Show("이벤트 상품 목록을 추가해주세요", "정지", MessageBoxButton.OK, MessageBoxImage.Stop);
                 return;
             }
 
-            if(UserList.Items.Count < 1)
+            if (UserList.Items.Count < 1)
             {
                 Console.WriteLine("User list is null.");
                 MessageBox.Show("참여 회원 목록을 추가해주세요", "정지", MessageBoxButton.OK, MessageBoxImage.Stop);
                 return;
             }
 
-            if(MessageBox.Show("추첨을 진행합니다.", "안내", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("추첨을 진행합니다.", "안내", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 Console.WriteLine("Lottery Start");
                 MainWindow.ContainerChange(new Page02CountDown());
@@ -87,7 +75,7 @@ namespace DeveloidEventLottery
                 Console.WriteLine("Lottery Cancel");
                 MessageBox.Show("추첨을 취소했습니다.");
             }
-            
+
         }
     }
 }

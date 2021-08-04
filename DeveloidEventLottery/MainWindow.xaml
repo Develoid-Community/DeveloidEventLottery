@@ -53,7 +53,6 @@
 
                     <!-- Title -->
                     <Grid Grid.Column="0"
-                          PreviewMouseDown="System_MouseDown"
                           PreviewMouseMove="System_MouseMove"
                           Background="Transparent">
 
