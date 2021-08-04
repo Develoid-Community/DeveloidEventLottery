@@ -1,3 +1,5 @@
 **/.vs/
 **/obj/
 **/bin/
+**/Properties/
+DeveloidEventLottery/DeveloidEventLottery.csproj.user
