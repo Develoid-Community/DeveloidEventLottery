@@ -1,0 +1,94 @@
+﻿<Page x:Class="DeveloidEventLottery.Page01Main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DeveloidEventLottery"
+      mc:Ignorable="d" 
+      d:DesignHeight="380" d:DesignWidth="800"
+      Title="Main">
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Item List -->
+        <TextBlock Grid.Row="0"
+                               Grid.Column="0"
+                               Style="{StaticResource ContentTitle}"
+                               Text="이벤트 상품"/>
+
+        <Border Grid.Row="1"
+                            Grid.Column="0"
+                            Style="{StaticResource ContentDataGridBorder}">
+
+            <DataGrid Name="ItemList"
+                                  Style="{StaticResource ContentDataGrid}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="품명" Binding="{Binding Item, Mode=TwoWay}" Width="2*"/>
+                    <DataGridTextColumn Header="수량" Binding="{Binding Qty, Mode=TwoWay}" Width="1*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <TextBlock Grid.Row="0"
+                               Grid.Column="1"
+                               Style="{StaticResource ContentTitle}"
+                               Text="참여 회원"/>
+
+        <Border Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{StaticResource ContentDataGridBorder}">
+
+            <DataGrid Name="UserList"
+                                  Style="{StaticResource ContentDataGrid}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="닉네임" Binding="{Binding NickName, Mode=TwoWay}" Width="2*"/>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ID, Mode=TwoWay}" Width="2*"/>
+                    <DataGridTextColumn Header="중복" Binding="{Binding Overlap, Mode=TwoWay}" Width="1*"/>
+                    <DataGridTextColumn Header="확률" Binding="{Binding Percentage, Mode=TwoWay}" Width="1*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <!-- Button -->
+        <DockPanel Grid.Row="1"
+                   Grid.Column="2"
+                   LastChildFill="False"
+                   Margin="5, 0">
+
+            <Button DockPanel.Dock="Top"
+                    Style="{StaticResource ContentButton}"
+                    Margin="0,0,0,10"
+                    Content="상품 불러오기" Cursor="Hand"
+                    Click="ButtonClick_ImportItemList"/>
+
+            <Button DockPanel.Dock="Top"
+                    Style="{StaticResource ContentButton}"
+                    Margin="0,0,0,10"
+                    Content="회원 불러오기" Cursor="Hand"
+                    Click="ButtonClick_ImportUserList"/>
+
+            <Button DockPanel.Dock="Top"
+                    Style="{StaticResource ContentButton}"
+                    Margin="0,0,0,10"
+                    Content="CSV 양식받기"
+                    Click="ButtonClick_FormDownload" Cursor="Hand"/>
+
+            <Button DockPanel.Dock="Bottom"
+                    Style="{StaticResource ContentButtonRun}"
+                    Content="추첨"
+                    Click="ButtonClick_LotteryRun"/>
+
+        </DockPanel>
+
+    </Grid>
+</Page>

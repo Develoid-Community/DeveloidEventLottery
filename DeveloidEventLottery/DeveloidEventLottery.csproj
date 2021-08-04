@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+	<UseWPF>true</UseWPF>
+	<UseWindowsForms>true</UseWindowsForms>
+	<DebugType>embedded</DebugType>
+	<Authors>HKB(SRA)</Authors>
+	<ApplicationIcon>develoid_logo.ico</ApplicationIcon>
+	<PublishSingleFile>true</PublishSingleFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="develoid_logo.ico" />
+    <None Remove="develoid_logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="develoid_logo.ico" />
+    <Resource Include="develoid_logo.png" />
+  </ItemGroup>
+
+</Project>

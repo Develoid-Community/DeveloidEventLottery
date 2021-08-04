@@ -1,0 +1,49 @@
+﻿<Page x:Class="DeveloidEventLottery.Page00Information"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DeveloidEventLottery"
+      mc:Ignorable="d" 
+      d:DesignHeight="380" d:DesignWidth="800"
+      Title="Information">
+
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.Column="0"
+               Source="/develoid_logo.png"
+               Width="150"/>
+
+        <TextBlock Grid.Row="2"
+                   Style="{StaticResource Information}"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   Text="디벨로이드 이벤트 추첨기"/>
+        
+        <TextBlock Grid.Row="3"
+                   FontSize="12"
+                   Style="{StaticResource Information}"
+                   Text="Author by 잉여공학도"/>
+
+        <TextBlock Grid.Row="4"
+                   Style="{StaticResource Information}"
+                   FontSize="16"
+                   Text="Copyright 2021. DEVELOID. All right reserved."/>
+
+        <Button Grid.Row="6"
+                Style="{StaticResource ContentButton}"
+                Margin="5, 0"
+                Width="150"
+                Content="처음으로" Cursor="Hand"
+                Click="ButtonClick_ToMain"/>
+    </Grid>
+</Page>
