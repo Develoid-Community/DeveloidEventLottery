@@ -5,6 +5,12 @@ namespace DeveloidEventLottery
 {
     class Winner
     {
+        public static int RandomNumber(int Max)
+        {
+            Random rand = new Random();
+            return rand.Next(0, Max);
+        }
+
         public static void Get()
         {
             try
@@ -32,23 +38,31 @@ namespace DeveloidEventLottery
                     while (loop < count)
                     {
                         // 전체 참가자 수 범위 내에서 랜덤 숫자 뽑기
-                        Random rand = new Random();
-                        int r = rand.Next(userAll - 1);
+                        int r = RandomNumber(userAll);
+                        if (r > userAll) r = userAll;
 
                         string userId = Bindings.LIST_USER[r].ID;
 
                         // 중복 된 값이 없을 경우 또는 중복 추첨 프로세스 조건 성립
-                        if (!pass.Contains(userId) || itemAll > userAll)
+                        if (!pass.Contains(userId))
                         {
-                            string ID_BLIND = userId.Substring(0, 4) + "****";
+                            string idBlind = Bindings.UserIdBlind(userId);
 
                             winner.Add(new Bindings.WinnerList(Bindings.LIST_ITEM[i].Item, Bindings.LIST_USER[r].NickName, userId));
-                            winner_view.Add(new Bindings.WinnerList(Bindings.LIST_ITEM[i].Item, Bindings.LIST_USER[r].NickName, ID_BLIND));
+                            winner_view.Add(new Bindings.WinnerList(Bindings.LIST_ITEM[i].Item, Bindings.LIST_USER[r].NickName, idBlind));
 
-                            pass.Add(userId);
+                            if (pass.Count == userAll) pass.Clear(); // 중복 제외 대상 값이 회원 수와 같을 경우 초기화
+                            else pass.Add(userId); // 아닐 경우 추가
+
                             loop++;
                         }
+
+                        Console.WriteLine("Pass -> " + pass.Count.ToString());
+                        Console.WriteLine("User -> " + Bindings.LIST_USER.Count.ToString());
                     }
+
+                    // 상품 수가 회원 수 보다 많은 경우 중복 값 제거해서 다음 아이템에서 추첨 될 수 있도록 처리
+                    if (itemAll > userAll) pass.Clear();
                 }
 
                 Bindings.LIST_WINNER = winner;

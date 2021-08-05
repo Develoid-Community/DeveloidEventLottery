@@ -10,6 +10,7 @@
 	<ApplicationIcon>develoid_logo.ico</ApplicationIcon>
 	<PublishSingleFile>true</PublishSingleFile>
 	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	<Version>1.0.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

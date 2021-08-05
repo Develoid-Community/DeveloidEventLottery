@@ -4,6 +4,16 @@ namespace DeveloidEventLottery
 {
     class Bindings
     {
+        public static string UserIdBlind(string id)
+        {
+            string idBlind;
+            if (id.Length > 4) idBlind = id.Substring(0, 4) + "****";
+            else if (id.Length > 2) idBlind = id.Substring(0, 2) + "****";
+            else idBlind = "****";
+
+            return idBlind;
+        }
+
         // 상품 목록
         public static List<ItemList> LIST_ITEM = new List<ItemList>();
 

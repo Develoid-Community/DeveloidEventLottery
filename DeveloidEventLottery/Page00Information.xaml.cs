@@ -11,6 +11,8 @@ namespace DeveloidEventLottery
         public Page00Information()
         {
             InitializeComponent();
+
+            ProgramVersion.Text = "Version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         private void ButtonClick_ToMain(object s, RoutedEventArgs e)

@@ -15,6 +15,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="10"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
@@ -28,18 +29,23 @@
                    FontSize="28"
                    FontWeight="Bold"
                    Text="디벨로이드 이벤트 추첨기"/>
-        
+
         <TextBlock Grid.Row="3"
+                   FontSize="12"
+                   Style="{StaticResource Information}"
+                   Name="ProgramVersion"/>
+
+        <TextBlock Grid.Row="4"
                    FontSize="12"
                    Style="{StaticResource Information}"
                    Text="Author by 잉여공학도"/>
 
-        <TextBlock Grid.Row="4"
+        <TextBlock Grid.Row="5"
                    Style="{StaticResource Information}"
                    FontSize="16"
                    Text="Copyright 2021. DEVELOID. All right reserved."/>
 
-        <Button Grid.Row="6"
+        <Button Grid.Row="7"
                 Style="{StaticResource ContentButton}"
                 Margin="5, 0"
                 Width="150"

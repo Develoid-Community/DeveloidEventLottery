@@ -23,11 +23,11 @@ namespace DeveloidEventLottery
 
                 // 상품 목록 파일 정보 생성
                 string ItemPath = Path.Combine(FolderPath, "디벨로이드_이벤트_추첨기_상품목록.csv");
-                string ItemForm = "상품, 수량";
+                string ItemForm = "상품,수량";
 
                 // 회원 목록 파일 정보 생성
                 string UserPath = Path.Combine(FolderPath, "디벨로이드_이벤트_추첨기_회원목록.csv");
-                string UserForm = "닉네임, ID";
+                string UserForm = "닉네임,ID";
 
                 // 파일 생성
                 File.WriteAllText(ItemPath, ItemForm, Encoding.UTF8);
@@ -163,7 +163,8 @@ namespace DeveloidEventLottery
                         });
 
                         // 데이터 생성 처리
-                        string idBlind = userId.Substring(0, 4) + "****";
+                        string idBlind = Bindings.UserIdBlind(userId);
+                        
                         double percent = (((double)count / (double)userList.Count) * 100);
                         string percentage = string.Format("{0:0.00}", percent) + "%";
 
@@ -192,15 +193,17 @@ namespace DeveloidEventLottery
                 if (FilePath is null) return;
 
                 // 헤더 생성
-                string str = "상품, 닉네임, ID" + Environment.NewLine;
+                string str = "상품,닉네임,ID" + Environment.NewLine;
 
                 for (int i = 0; i < Bindings.LIST_WINNER.Count; i++)
                 {
-                    str += string.Format("{0}, ", Bindings.LIST_WINNER[i].Item);
-                    str += string.Format("{0}, ", Bindings.LIST_WINNER[i].NickName);
+                    str += string.Format("{0},", Bindings.LIST_WINNER[i].Item);
+                    str += string.Format("{0},", Bindings.LIST_WINNER[i].NickName);
                     str += string.Format("{0}", Bindings.LIST_WINNER[i].ID);
                     str += Environment.NewLine;
                 }
+
+                str = str.Trim();
 
                 File.WriteAllText(FilePath, str, Encoding.UTF8);
             }
