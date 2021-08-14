@@ -29,12 +29,13 @@ namespace DeveloidEventLottery
                 // 중복 추첨 프로세스 실행 여부 판단 목적, 전체 회원 수
                 int userAll = Bindings.LIST_USER.Count;
 
+                // 중복 참여자 필터링 한 회원 수
                 int checkUserAll = Bindings.LIST_USER_VIEW.Count;
 
                 if (userAll != checkUserAll)
                 {
-                    Console.WriteLine("Error");
-                    Console.ReadLine();
+                    Console.WriteLine("UserAll -> " + userAll.ToString());
+                    Console.WriteLine("CheckUserAll -> " + checkUserAll.ToString());
                 }
 
                 // 상품 목록 만큼 반복
@@ -59,16 +60,23 @@ namespace DeveloidEventLottery
                             winner.Add(new Bindings.WinnerList(Bindings.LIST_ITEM[i].Item, Bindings.LIST_USER[r].NickName, userId));
                             winner_view.Add(new Bindings.WinnerList(Bindings.LIST_ITEM[i].Item, Bindings.LIST_USER[r].NickName, idBlind));
 
-                            if (pass.Count == userAll) pass.Clear(); // 중복 제외 대상 값이 회원 수와 같을 경우 초기화
-                            else pass.Add(userId); // 아닐 경우 추가
+                            pass.Add(userId);
 
-                            if(userAll != checkUserAll)
+                            // 전체 회원 참여 수와 중복 참여자 필터링 된 수가 일치하지 않을 경우
+                            if (userAll != checkUserAll)
                             {
-                                int loopUp = Bindings.LIST_USER.Count()
+                                if (pass.Count == checkUserAll) pass.Clear(); // 중복 제외 대상 값이 필터링 된 회원 수와 같을 경우 초기화
                             }
-                            else loop++;
+                            else
+                            {
+                                if (pass.Count == userAll) pass.Clear(); // 중복 제외 대상 값이 회원 수와 같을 경우 초기화
+                            }
+
+                            loop++;
                         }
 
+                        Console.WriteLine("Count -> " + count.ToString());
+                        Console.WriteLine("Loop -> " + loop.ToString());
                         Console.WriteLine("Pass -> " + pass.Count.ToString());
                         Console.WriteLine("User -> " + Bindings.LIST_USER.Count.ToString());
                     }
@@ -84,11 +92,6 @@ namespace DeveloidEventLottery
             {
                 Console.WriteLine(ex);
             }
-        }
-
-        private int CheckUserListCommonValue(List<Bindings.UserList> list, string userId)
-        {
-            return -1;
         }
     }
 }

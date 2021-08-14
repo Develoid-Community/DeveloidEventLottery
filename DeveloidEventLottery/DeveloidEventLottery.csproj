@@ -10,7 +10,10 @@
 	<ApplicationIcon>develoid_logo.ico</ApplicationIcon>
 	<PublishSingleFile>true</PublishSingleFile>
 	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
-	<Version>1.0.0.1</Version>
+	<Version>1.0.0.2</Version>
+	<Product>디벨로이드 이벤트 추첨기</Product>
+	<Description>디벨로이드 이벤트 회원 증정 상품 추첨용 프로그램</Description>
+	<Copyright>2021. DEVELOID.</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
