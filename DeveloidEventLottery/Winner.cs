@@ -29,6 +29,14 @@ namespace DeveloidEventLottery
                 // 중복 추첨 프로세스 실행 여부 판단 목적, 전체 회원 수
                 int userAll = Bindings.LIST_USER.Count;
 
+                int checkUserAll = Bindings.LIST_USER_VIEW.Count;
+
+                if (userAll != checkUserAll)
+                {
+                    Console.WriteLine("Error");
+                    Console.ReadLine();
+                }
+
                 // 상품 목록 만큼 반복
                 for (int i = 0; i < Bindings.LIST_ITEM.Count; i++)
                 {
@@ -54,7 +62,11 @@ namespace DeveloidEventLottery
                             if (pass.Count == userAll) pass.Clear(); // 중복 제외 대상 값이 회원 수와 같을 경우 초기화
                             else pass.Add(userId); // 아닐 경우 추가
 
-                            loop++;
+                            if(userAll != checkUserAll)
+                            {
+                                int loopUp = Bindings.LIST_USER.Count()
+                            }
+                            else loop++;
                         }
 
                         Console.WriteLine("Pass -> " + pass.Count.ToString());
@@ -72,6 +84,11 @@ namespace DeveloidEventLottery
             {
                 Console.WriteLine(ex);
             }
+        }
+
+        private int CheckUserListCommonValue(List<Bindings.UserList> list, string userId)
+        {
+            return -1;
         }
     }
 }
